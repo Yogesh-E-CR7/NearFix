@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NearFix - Local Services</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            <img src="image.png" alt="NearFix Logo" width="40" height="40">NearFix
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#providers">Providers</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="login-btn" onclick="loginUser()">
+            Login
+        </button>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                🟢 Local Services Near You
+            </span>
+
+            <h1>
+                Find the Right Service
+                <span>Near You.</span>
+            </h1>
+
+            <p>
+                Find trusted local service providers,
+                compare prices, check ratings and connect easily.
+            </p>
+
+
+            <!-- Search Box -->
+            <div class="search-box">
+
+                <div class="search-input">
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="What service do you need?"
+                        onkeyup="searchProviders()"
+                    >
+                </div>
+
+                <div class="location-input">
+                    <span>📍</span>
+
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Enter location"
+                    >
+                </div>
+
+                <button onclick="searchProviders()">
+                    Find Services
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Categories -->
+    <section class="categories" id="services">
+
+        <div class="section-heading">
+
+            <span>EXPLORE</span>
+
+            <h2>What service do you need?</h2>
+
+            <p>
+                Choose a category to find nearby service providers.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category-card"
+                 onclick="filterCategory('Home')">
+
+                <div class="category-icon">🏠</div>
+
+                <h3>Home & Repair</h3>
+
+                <p>
+                    Electrician, plumber, carpenter and more
+                </p>
+
+            </div>
+
+
+            <div class="category-card"
+                 onclick="filterCategory('Technology')">
+
+                <div class="category-icon">📱</div>
+
+                <h3>Technology</h3>
+
+                <p>
+                    Mobile, laptop, CCTV and computer services
+                </p>
+
+            </div>
+
+
+            <div class="category-card"
+                 onclick="filterCategory('Vehicle')">
+
+                <div class="category-icon">🚗</div>
+
+                <h3>Vehicle</h3>
+
+                <p>
+                    Bike, car, puncture and battery services
+                </p>
+
+            </div>
+
+
+            <div class="category-card"
+                 onclick="filterCategory('Personal')">
+
+                <div class="category-icon">👕</div>
+
+                <h3>Personal</h3>
+
+                <p>
+                    Salon, barber, tailor and laundry
+                </p>
+
+            </div>
+
+
+            <div class="category-card"
+                 onclick="filterCategory('Education')">
+
+                <div class="category-icon">📚</div>
+
+                <h3>Education</h3>
+
+                <p>
+                    Tutors, trainers and teachers
+                </p>
+
+            </div>
+
+
+            <div class="category-card"
+                 onclick="filterCategory('Other')">
+
+                <div class="category-icon">📦</div>
+
+                <h3>Other Services</h3>
+
+                <p>
+                    Delivery, photography, catering and more
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Providers -->
+    <section class="providers-section" id="providers">
+
+        <div class="section-heading">
+
+            <span>NEARBY PROVIDERS</span>
+
+            <h2>Popular Service Providers</h2>
+
+            <p>
+                Compare local providers and choose the one
+                that suits your needs.
+            </p>
+
+        </div>
+
+
+        <!-- Filters -->
+        <div class="filters">
+
+            <select id="categoryFilter"
+                    onchange="applyFilters()">
+
+                <option value="All">All Categories</option>
+                <option value="Home">Home & Repair</option>
+                <option value="Technology">Technology</option>
+                <option value="Vehicle">Vehicle</option>
+                <option value="Personal">Personal</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+
+            <select id="ratingFilter"
+                    onchange="applyFilters()">
+
+                <option value="0">All Ratings</option>
+                <option value="4">4+ ⭐</option>
+                <option value="4.5">4.5+ ⭐</option>
+
+            </select>
+
+
+            <select id="budgetFilter"
+                    onchange="applyFilters()">
+
+                <option value="0">Any Budget</option>
+                <option value="300">Under ₹300</option>
+                <option value="500">Under ₹500</option>
+                <option value="1000">Under ₹1000</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Provider Cards -->
+        <div class="provider-grid" id="providerGrid">
+
+        </div>
+
+    </section>
+
+
+    <!-- Why NearFix -->
+    <section class="why-section">
+
+        <div class="section-heading">
+
+            <span>WHY NEARFIX?</span>
+
+            <h2>Everything you need in one place</h2>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <div>📍</div>
+                <h3>Nearby Services</h3>
+                <p>
+                    Discover service providers close to your location.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <div>💰</div>
+                <h3>Compare Prices</h3>
+                <p>
+                    Choose services according to your budget.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <div>⭐</div>
+                <h3>Trusted Ratings</h3>
+                <p>
+                    Check ratings before choosing a provider.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <div>📞</div>
+                <h3>Easy Contact</h3>
+                <p>
+                    Contact your selected provider quickly.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="about">
+
+        <div class="footer-logo">
+            ⚡ NearFix
+        </div>
+
+        <p>
+            Find Nearby. Fix Easily.
+        </p>
+
+        <p class="copyright">
+            © 2026 NearFix. College Project.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
